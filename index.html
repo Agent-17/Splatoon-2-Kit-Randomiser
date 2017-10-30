@@ -1,0 +1,785 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Splatoon 2 Kit Randomizer</title>
+        <link href="css/bootstrap.css" rel="stylesheet">
+        <script src="splatoon2.js"></script>
+        <script src="seedrandom.js"></script>
+        <script>
+			var queryString = (function(a) {
+				if (a == "") return {};
+				var b = {};
+				for (var i = 0; i < a.length; ++i)
+				{
+					var p=a[i].split('=', 2);
+					if (p.length == 1)
+						b[p[0]] = "";
+					else
+						b[p[0]] = decodeURIComponent(p[1].replace(/\+/g, " "));
+				}
+				return b;
+			})(window.location.search.substr(1).split('&'));
+			
+			if (queryString['seed'] != undefined) {
+				Math.seedrandom(queryString['seed']);
+			} 
+
+            var modeIndex = Math.floor( Math.random() * splatoon.modes.length );
+			var stageIndex = Math.floor( Math.random() * splatoon.stages.length );
+			var teamCombinationIndex = Math.floor( Math.random() * splatoon.teamCombinations.length );
+
+            var random = Array();
+
+            random['weapon1Index'] = Math.floor( Math.random() * splatoon.weapons.length );
+			random['headgear1Index'] = Math.floor( Math.random() * splatoon.gear.headgear.length );
+			random['clothing1Index'] = Math.floor( Math.random() * splatoon.gear.clothing.length );
+			random['shoes1Index'] = Math.floor( Math.random() * splatoon.gear.shoes.length );
+			
+			random['weapon2Index'] = Math.floor( Math.random() * splatoon.weapons.length );
+			random['headgear2Index'] = Math.floor( Math.random() * splatoon.gear.headgear.length );
+			random['clothing2Index'] = Math.floor( Math.random() * splatoon.gear.clothing.length );
+			random['shoes2Index'] = Math.floor( Math.random() * splatoon.gear.shoes.length );
+			
+			random['weapon3Index'] = Math.floor( Math.random() * splatoon.weapons.length );
+			random['headgear3Index'] = Math.floor( Math.random() * splatoon.gear.headgear.length );
+			random['clothing3Index'] = Math.floor( Math.random() * splatoon.gear.clothing.length );
+			random['shoes3Index'] = Math.floor( Math.random() * splatoon.gear.shoes.length );
+			
+			random['weapon4Index'] = Math.floor( Math.random() * splatoon.weapons.length );
+			random['headgear4Index'] = Math.floor( Math.random() * splatoon.gear.headgear.length );
+			random['clothing4Index'] = Math.floor( Math.random() * splatoon.gear.clothing.length );
+			random['shoes4Index'] = Math.floor( Math.random() * splatoon.gear.shoes.length );
+			
+			random['weapon5Index'] = Math.floor( Math.random() * splatoon.weapons.length );
+			random['headgear5Index'] = Math.floor( Math.random() * splatoon.gear.headgear.length );
+			random['clothing5Index'] = Math.floor( Math.random() * splatoon.gear.clothing.length );
+			random['shoes5Index'] = Math.floor( Math.random() * splatoon.gear.shoes.length );
+			
+			random['weapon6Index'] = Math.floor( Math.random() * splatoon.weapons.length );
+			random['headgear6Index'] = Math.floor( Math.random() * splatoon.gear.headgear.length );
+			random['clothing6Index'] = Math.floor( Math.random() * splatoon.gear.clothing.length );
+			random['shoes6Index'] = Math.floor( Math.random() * splatoon.gear.shoes.length );
+			
+			random['weapon7Index'] = Math.floor( Math.random() * splatoon.weapons.length );
+			random['headgear7Index'] = Math.floor( Math.random() * splatoon.gear.headgear.length );
+			random['clothing7Index'] = Math.floor( Math.random() * splatoon.gear.clothing.length );
+			random['shoes7Index'] = Math.floor( Math.random() * splatoon.gear.shoes.length );
+			
+			random['weapon8Index'] = Math.floor( Math.random() * splatoon.weapons.length );
+			random['headgear8Index'] = Math.floor( Math.random() * splatoon.gear.headgear.length );
+			random['clothing8Index'] = Math.floor( Math.random() * splatoon.gear.clothing.length );
+			random['shoes8Index'] = Math.floor( Math.random() * splatoon.gear.shoes.length );
+        </script>
+    </head>
+    <style>
+				
+			@font-face { font-family: Paintball; src: url(Paintball.otf);}
+			
+			div {font-family: Paintball; color: white;}
+			body {background-color:#FFF; margin:0px;}
+			
+			#body {position:relative; top:0px; left:0px; width:1920px; height:1080px; perspective:3000px;}
+			#titleDiv {width:1920px; text-align:center; font-size:100px; text-shadow: 5px 5px #888;}
+			#seedDiv {position:absolute; bottom:0px; left:0px; width:1920px; text-align:center; font-size:24px;}
+			#stageModeTextDiv {position:absolute; top:899px; left:0px; width:1920px; height:181px; line-height:181px; vertical-align:middle; text-align:center; font-size:80px; text-shadow: 3px 3px #888;}
+			#stageDiv {position:absolute; top:0px; left:0px; width:1920px; height:1080px; opacity:1; z-index:-1;}
+			#modeDiv {position:absolute; top:380px; left:800px; width: 320px; height:320px;}
+			#modeDiv > img {width: 320px; height:320px;}
+			#creditDiv { width:1920px; top:1040px; text-align:center;  font-size:20px; text-shadow: 3px 3px #888;}
+			
+			
+			.teamDiv {position:absolute; top:182px; width:832px; height:720px; border:1px solid; }
+			#alphaTeamDiv {left:10px; border-color:rgb(255, 22, 150); transform:rotateY(30deg);}
+			#bravoTeamDiv {right:10px; border-color:greenyellow; transform:rotateY(-30deg);}
+			
+			#alphaTeamBackgroundDiv, #bravoTeamBackgroundDiv {position:absolute; top:0px; width:100%; height:100%; opacity:0.8; z-index:-1}
+			#alphaTeamBackgroundDiv {left:0px; background-color:rgb(255, 22, 150); }
+			#bravoTeamBackgroundDiv {right:0px; background-color:greenyellow; }
+			
+			#alphaTeamTitleDiv, #bravoTeamTitleDiv {width:100%; text-align:center; font-size:32px;}
+			
+			.kitHeadingCell {position:absolute; top:0px; width:203px; text-align:center; font-size:20px; border:1px solid white;}
+			.kitCell {position:absolute; width:203px; height:160px; border:1px solid white;}
+			.teamHeadingsDiv {position:relative; top:0px; width:100%; height:30px;}
+			.indexHeadingDiv {position:absolute; top:0px; width:20px; text-align:center; font-size:20px; border:1px solid white;} 
+			#alphaTeamDiv .indexHeadingDiv {right:0px;} 
+			#bravoTeamDiv .indexHeadingDiv {left:0px;} 
+			#alphaTeamDiv .weaponHeadingDiv {left:0px;} 
+			#bravoTeamDiv .weaponHeadingDiv {right:609px;} 
+			#alphaTeamDiv .headgearHeadingDiv {left:203px;} 
+			#bravoTeamDiv .headgearHeadingDiv {right:406px;} 
+			#alphaTeamDiv .clothingHeadingDiv {left:406px;} 
+			#bravoTeamDiv .clothingHeadingDiv {right:203px;} 
+			#alphaTeamDiv .shoesHeadingDiv {left:609px;} 
+			#bravoTeamDiv .shoesHeadingDiv {right:0px;} 
+			.playerDiv {position:relative; width:100%; height:160px; text-align:center; }
+			.indexDiv {position:absolute; top:0px; width:20px; height:160px; line-height:160px; vertical-align:middle; font-size:20px; border:1px solid white;} 
+			#alphaTeamDiv .indexDiv {right:0px;} 
+			#bravoTeamDiv .indexDiv {left:0px;} 
+			#alphaTeamDiv .weaponDiv {left:0px;} 
+			#bravoTeamDiv .weaponDiv {right:609px;} 
+			#alphaTeamDiv .headgearDiv {left:203px;}  
+			#bravoTeamDiv .headgearDiv {right:406px;} 
+			#alphaTeamDiv .clothingDiv {left:406px;}  
+			#bravoTeamDiv .clothingDiv {right:203px;} 
+			#alphaTeamDiv .shoesDiv {left:609px;} 
+			#bravoTeamDiv .shoesDiv {right:0px;} 
+			
+			#alphaTeamDiv .indexColumnCell {right:0px;} 
+			#bravoTeamDiv .indexColumnCell {left:0px;} 
+			#alphaTeamDiv .weaponColumnCell {left:0px;} 
+			#bravoTeamDiv .weaponColumnCell {right:609px;}
+			#alphaTeamDiv .headgearColumnCell {left:203px;} 
+			#bravoTeamDiv .headgearColumnCell {right:406px;} 
+			#alphaTeamDiv .clothingColumnCell {left:406px;} 
+			#bravoTeamDiv .clothingColumnCell {right:203px;} 
+			#alphaTeamDiv .shoesColumnCell {left:609px;} 
+			#bravoTeamDiv .shoesColumnCell {right:0px;}
+			
+			.headingRow {height:20px;}
+			.playerRow {height:160px;}
+			.indexColumn {width: 20px;}
+			.kitColumn {width: 203px;}
+			
+			.mainWeaponDiv {position:absolute; top:0px; left:0px; width:128px; height:128px;}
+			.subWeaponDiv {position:absolute; top:0px; right:0px; width:64px; height:64px;}
+			.subWeaponDiv > img {width:64px; height:64px;}
+			.specialWeaponDiv {position:absolute; top:64px; right:0px; width:64px; height:64px;}
+			.specialWeaponDiv > img {width:64px; height:64px;}
+			.weaponNameDiv {position:absolute; bottom:0px; left:0px; width:203px; height:32px; line-height:32px; font-size:15px; vertical-align:middle;}
+			
+			.gearDiv {position:absolute; top:0px; left: 0px; width:128px; height:128px;}
+			.mainAbilityDiv {position:absolute; top:32px; right:0px; width:64px; height:64px;}
+			.mainAbilityDiv > img {width:64px; height:64px;}
+			.gearNameDiv {position:absolute; top:128px; left: 0px; width:203px; height:32px; line-height:32px; font-size: 15px; vertical-align:middle;}
+		</style>
+	</head>
+	<body>
+		<div id="body">
+			<div id="titleDiv">Splatoon 2 Kit Randomiser</div>
+			<div id="creditDiv">(Credits to <a href="https://github.com/Woomy" target="_blank">Woomy</a> for the original <a href="http://woomy.github.io/Splatoon-Kit-Randomiser/index.html" target="_blank">Splatoon Kit Randomiser</a>!</div>
+			<div id="seedDiv"></div>
+			<div id="modeDiv"></div>
+			<div id="stageDiv"></div>
+			<div id="stageModeTextDiv"></div>
+			<div id="alphaTeamDiv" class="teamDiv">
+				<div id="alphaTeamBackgroundDiv"></div>
+				<div id="alphaTeamTitleDiv">Alpha Team</div>
+				
+				<div class="teamHeadingsDiv">
+					<div class="indexHeadingDiv">#</div>
+					<div class="weaponHeadingDiv kitHeadingCell">Weapon</div>
+					<div class="headgearHeadingDiv kitHeadingCell">Headgear</div>
+					<div class="clothingHeadingDiv kitHeadingCell">Clothing</div>
+					<div class="shoesHeadingDiv kitHeadingCell">Shoes</div>
+				</div>
+				<div id="alphaTeamPlayer1Div" class="playerDiv">
+					<div class="indexDiv"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="alphaTeamPlayer2Div" class="playerDiv">
+					<div class="indexDiv"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="alphaTeamPlayer3Div" class="playerDiv">
+					<div class="indexDiv"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="alphaTeamPlayer4Div" class="playerDiv">
+					<div class="indexDiv"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+			</div>
+			<div id="bravoTeamDiv" class="teamDiv">
+				<div id="bravoTeamBackgroundDiv"></div>
+				<div id="bravoTeamTitleDiv">Bravo Team</div>
+				<div class="teamHeadingsDiv">
+					<div class="indexHeadingDiv">#</div>
+					<div class="weaponHeadingDiv kitHeadingCell">Weapon</div>
+					<div class="headgearHeadingDiv kitHeadingCell">Headgear</div>
+					<div class="clothingHeadingDiv kitHeadingCell">Clothing</div>
+					<div class="shoesHeadingDiv kitHeadingCell">Shoes</div>
+				</div>
+				<div id="bravoTeamPlayer1Div" class="playerDiv">
+					<div class="indexDiv indexColumn playerRow"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="bravoTeamPlayer2Div" class="playerDiv">
+					<div class="indexDiv indexColumn playerRow"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="bravoTeamPlayer3Div" class="playerDiv">
+					<div class="indexDiv indexColumn playerRow"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="bravoTeamPlayer4Div" class="playerDiv">
+					<div class="indexDiv indexColumn playerRow"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		
+		<script>
+			document.getElementById('modeDiv').innerHTML = '<img src="img/Map/' + splatoon.modes[modeIndex] + '.png"/>';
+			document.getElementById('stageDiv').style.backgroundImage = 'url("img/Map/' + splatoon.stages[stageIndex] + '.jpg")';
+			document.getElementById('stageDiv').style.backgroundSize = '1920px';
+			document.getElementById('stageModeTextDiv').innerHTML = splatoon.stages[stageIndex] + " - " + splatoon.modes[modeIndex];
+
+			if (queryString['seed'] != undefined) {
+				document.getElementById('seedDiv').innerHTML = 'Seed: ' + queryString['seed'];
+			}
+			
+			if (queryString['mode'] == 'squidsisters') {
+				document.getElementById('alphaTeamBackgroundDiv').style.backgroundColor = 'magenta';
+				document.getElementById('alphaTeamTitleDiv').innerHTML = 'Team Callie';
+				document.getElementById('bravoTeamBackgroundDiv').style.backgroundColor = '#88FF00';
+				document.getElementById('bravoTeamTitleDiv').innerHTML = 'Team Marie';
+			}
+			
+			function playerSetup(teamName, teamIndex, lobbyIndex, randomIndexArray) {
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.indexDiv').innerHTML = lobbyIndex;
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.mainWeaponDiv').innerHTML = '<img src="img/Weapon/' + unixFriendly(splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].name) + '.png"/>';
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.subWeaponDiv').innerHTML = '<img src="img/Sub/' + splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].subWeapon + '.png"/>';
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.specialWeaponDiv').innerHTML = '<img src="img/Special/' + (splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].specialWeapon == 'Bomb Rush' ? splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].subWeapon + ' ' : '') + splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].specialWeapon + '.png"/>';
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.weaponNameDiv').innerHTML = splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].name;
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.headgearDiv').querySelector('.gearDiv').innerHTML = '<img src="img/Gear/Head/' + splatoon.gear.headgear[randomIndexArray['headgear' + lobbyIndex + 'Index']].name + '.png"/>';
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.headgearDiv').querySelector('.mainAbilityDiv').innerHTML = '<img src="img/Ability/' + splatoon.gear.headgear[randomIndexArray['headgear' + lobbyIndex + 'Index']].mainAbility + '.png"/>';
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.headgearDiv').querySelector('.gearNameDiv').innerHTML = splatoon.gear.headgear[randomIndexArray['headgear' + lobbyIndex + 'Index']].name
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.clothingDiv').querySelector('.gearDiv').innerHTML = '<img src="img/Gear/Clothes/' + splatoon.gear.clothing[randomIndexArray['clothing' + lobbyIndex + 'Index']].name + '.png"/>';
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.clothingDiv').querySelector('.mainAbilityDiv').innerHTML = '<img src="img/Ability/' + splatoon.gear.clothing[randomIndexArray['clothing' + lobbyIndex + 'Index']].mainAbility + '.png"/>';
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.clothingDiv').querySelector('.gearNameDiv').innerHTML = splatoon.gear.clothing[randomIndexArray['clothing' + lobbyIndex + 'Index']].name;
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.shoesDiv').querySelector('.gearDiv').innerHTML = '<img src="img/Gear/Shoes/' + splatoon.gear.shoes[randomIndexArray['shoes' + lobbyIndex + 'Index']].name + '.png"/>';
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.shoesDiv').querySelector('.mainAbilityDiv').innerHTML = '<img src="img/Ability/' + splatoon.gear.shoes[randomIndexArray['shoes' + lobbyIndex + 'Index']].mainAbility + '.png"/>';
+				document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.shoesDiv').querySelector('.gearNameDiv').innerHTML = splatoon.gear.shoes[randomIndexArray['shoes' + lobbyIndex + 'Index']].name;
+			}
+			
+			function unixFriendly(text) {
+				return text.replace(/^\./g,"");
+			}
+			
+			var alphaTeamPlayerIndex = 0;
+			var bravoTeamPlayerIndex = 0;
+			for (var i = 0; i < 8; i++) {
+				if (splatoon.teamCombinations[teamCombinationIndex][i] == 0) {
+					alphaTeamPlayerIndex++;
+					playerSetup('alpha',alphaTeamPlayerIndex,i+1, random);
+				} else if (splatoon.teamCombinations[teamCombinationIndex][i] == 1) {
+					bravoTeamPlayerIndex++;
+					playerSetup('bravo',bravoTeamPlayerIndex,i+1, random);
+				}
+			}
+		</script>
+	</body>
+		<script>/*
+        @font-face { font-family: Paintball; src: url(Paintball.otf);}
+
+        div {font-family: "Paintball"; color: White;}
+		body {background-color:rgb(62, 61, 82); margin:0px;}
+
+        #titleDiv {width:1920px; text-align:center; font-size:100px; text-shadow: 5px 5px rgb(173, 167, 190);}
+		#body {position:relative; top:0px; left:0px; width:1920px; height:1080px; perspective:3000px;}
+		#stageModeTextDiv {position:absolute; top:889px; left:0px; width:1920px; height:181px; line-height:181px; vertical-align:middle; text-align:center; font-size:70px; text-shadow: 3px 3px rgb(173, 167, 190);}
+		#stageDiv {position:absolute; top:0px; left:0px; width:1920px; height:1080px; opacity:1; z-index:-1;}
+		#modeDiv {position:absolute; top:380px; left:800px; width: 320px; height:320px;}
+		#modeDiv > img {width: 320px; height:320px;}
+
+		.teamDiv {position:absolute; top:182px; width:838px; height:724px; border:3px solid; }
+		#alphaTeamDiv {left:10px; border-color:rgb(255, 22, 150); transform:rotateY(30deg);}
+		#bravoTeamDiv {right:10px; border-color:greenyellow; transform:rotateY(-30deg);}
+
+		#alphaTeamBackgroundDiv, #bravoTeamBackgroundDiv {position:absolute; top:0px; width:100%; height:100%; opacity:0.6; z-index:-1}
+		#alphaTeamBackgroundDiv {left:0px; background-color:rgb(255, 22, 150); }
+		#bravoTeamBackgroundDiv {right:0px; background-color:greenyellow; }
+
+		#alphaTeamTitleDiv, #bravoTeamTitleDiv {width:100%; text-align:center; font-size:32px;}
+
+		.kitHeadingCell {position:absolute; top:0px; width:203px; text-align:center; font-size:20px; border:1px solid white;}
+		.kitCell {position:absolute; width:203px; height:160px; border:1px solid white;}
+		.teamHeadingsDiv {position:relative; top:0px; width:100%; height:30px;}
+		.indexHeadingDiv {position:absolute; top:0px; width:20px; text-align:center; font-size:20px; border:1px solid white;} 
+		#alphaTeamDiv .indexHeadingDiv {right:0px;} 
+		#bravoTeamDiv .indexHeadingDiv {left:0px;} 
+		#alphaTeamDiv .weaponHeadingDiv {left:0px;} 
+		#bravoTeamDiv .weaponHeadingDiv {right:609px;} 
+		#alphaTeamDiv .headgearHeadingDiv {left:203px;} 
+		#bravoTeamDiv .headgearHeadingDiv {right:406px;} 
+		#alphaTeamDiv .clothingHeadingDiv {left:406px;} 
+		#bravoTeamDiv .clothingHeadingDiv {right:203px;} 
+		#alphaTeamDiv .shoesHeadingDiv {left:609px;} 
+		#bravoTeamDiv .shoesHeadingDiv {right:0px;} 
+
+		.playerDiv {position:relative; width:100%; height:160px; text-align:center; }
+		.indexDiv {position:absolute; top:0px; width:20px; height:160px; line-height:160px; vertical-align:middle; font-size:20px; border:1px solid white;} 
+		#alphaTeamDiv .indexDiv {right:0px;} 
+		#bravoTeamDiv .indexDiv {left:0px;} 
+		#alphaTeamDiv .weaponDiv {left:0px;} 
+		#bravoTeamDiv .weaponDiv {right:609px;} 
+		#alphaTeamDiv .headgearDiv {left:203px;}  
+		#bravoTeamDiv .headgearDiv {right:406px;} 
+		#alphaTeamDiv .clothingDiv {left:406px;}  
+		#bravoTeamDiv .clothingDiv {right:203px;} 
+		#alphaTeamDiv .shoesDiv {left:609px;} 
+		#bravoTeamDiv .shoesDiv {right:0px;} 
+			
+		#alphaTeamDiv .indexColumnCell {right:0px;} 
+		#bravoTeamDiv .indexColumnCell {left:0px;} 
+		#alphaTeamDiv .weaponColumnCell {left:10px;} 
+		#bravoTeamDiv .weaponColumnCell {right:609px;}
+		#alphaTeamDiv .headgearColumnCell {left:203px;} 
+		#bravoTeamDiv .headgearColumnCell {right:406px;} 
+		#alphaTeamDiv .clothingColumnCell {left:406px;} 
+		#bravoTeamDiv .clothingColumnCell {right:203px;} 
+		#alphaTeamDiv .shoesColumnCell {left:609px;} 
+		#bravoTeamDiv .shoesColumnCell {right:0px;}
+			
+		.headingRow {height:20px;}
+		.playerRow {height:160px;}
+		.indexColumn {width: 20px;}
+		.kitColumn {width: 203px;}
+			
+		.mainWeaponDiv {position:absolute; top:0px; left:0px; width:128px; height:128px;}
+		.subWeaponDiv {position:absolute; top:0px; right:0px; width:64px; height:64px;}
+		.subWeaponDiv > img {width:64px; height:64px;}
+		.specialWeaponDiv {position:absolute; top:64px; right:0px; width:64px; height:64px;}
+		.specialWeaponDiv > img {width:64px; height:64px;}
+		.weaponNameDiv {position:absolute; bottom:0px; left:0px; width:203px; height:32px; line-height:32px; font-size:15px; vertical-align:middle;}
+			
+		.gearDiv {position:absolute; top:0px; left: 0px; width:128px; height:128px;}
+		.mainAbilityDiv {position:absolute; top:32px; right:0px; width:64px; height:64px;}
+		.mainAbilityDiv > img {width:64px; height:64px;}
+		.gearNameDiv {position:absolute; top:128px; left: 0px; width:203px; height:32px; line-height:32px; font-size: 15px; vertical-align:middle;}	
+		
+	</style>
+	</head>
+	<body>
+        <div id="body">
+			<div id="titleDiv">Splatoon 2 Kit Randomiser</div>
+			<div id="alphaTeamDiv" class="teamDiv">
+				<div id="alphaTeamBackgroundDiv"></div>
+				<div id="alphaTeamTitleDiv">Alpha Team</div>
+				<div class="teamHeadingsDiv">
+					<div class="indexHeadingDiv">#</div>
+					<div class="weaponHeadingDiv kitHeadingCell">Weapon</div>
+					<div class="headgearHeadingDiv kitHeadingCell">Headgear</div>
+					<div class="clothingHeadingDiv kitHeadingCell">Clothing</div>
+					<div class="shoesHeadingDiv kitHeadingCell">Shoes</div>
+				</div>
+				<div id="alphaTeamPlayer1Div" class="playerDiv">
+					<div class="indexDiv"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="alphaTeamPlayer2Div" class="playerDiv">
+					<div class="indexDiv"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="alphaTeamPlayer3Div" class="playerDiv">
+					<div class="indexDiv"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="alphaTeamPlayer4Div" class="playerDiv">
+					<div class="indexDiv"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+			</div>
+			<div id="bravoTeamDiv" class="teamDiv">
+				<div id="bravoTeamBackgroundDiv"></div>
+				<div id="bravoTeamTitleDiv">Bravo Team</div>
+				<div class="teamHeadingsDiv">
+					<div class="indexHeadingDiv">#</div>
+					<div class="weaponHeadingDiv kitHeadingCell">Weapon</div>
+					<div class="headgearHeadingDiv kitHeadingCell">Headgear</div>
+					<div class="clothingHeadingDiv kitHeadingCell">Clothing</div>
+					<div class="shoesHeadingDiv kitHeadingCell">Shoes</div>
+				</div>
+				<div id="bravoTeamPlayer1Div" class="playerDiv">
+					<div class="indexDiv indexColumn playerRow"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="bravoTeamPlayer2Div" class="playerDiv">
+					<div class="indexDiv indexColumn playerRow"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="bravoTeamPlayer3Div" class="playerDiv">
+					<div class="indexDiv indexColumn playerRow"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+				<div id="bravoTeamPlayer4Div" class="playerDiv">
+					<div class="indexDiv indexColumn playerRow"></div>
+					<div class="weaponDiv kitCell">
+						<div class="mainWeaponDiv"></div>
+						<div class="subWeaponDiv"></div>
+						<div class="specialWeaponDiv"></div>
+						<div class="weaponNameDiv"></div>
+					</div>
+					<div class="headgearDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="clothingDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+					<div class="shoesDiv kitCell">
+						<div class="gearDiv"></div>
+						<div class="mainAbilityDiv"></div>
+						<div class="gearNameDiv"></div>
+					</div>
+				</div>
+			</div>
+		</div>
+		<script>
+				document.getElementById('modeDiv').innerHTML = '<img src="Modes/' + splatoon.modes[modeIndex] + '.png"/>';
+				document.getElementById('stageDiv').style.backgroundImage = 'url("Stages/' + splatoon.stages[stageIndex] + '.jpg")';
+				document.getElementById('stageDiv').style.backgroundSize = '1920px';
+				document.getElementById('stageModeTextDiv').innerHTML = splatoon.stages[stageIndex] + " - " + splatoon.modes[modeIndex];
+	
+				if (queryString['seed'] != undefined) {
+					document.getElementById('seedDiv').innerHTML = 'Seed: ' + queryString['seed'];
+				}
+				
+				if (queryString['mode'] == 'squidsisters') {
+					document.getElementById('alphaTeamBackgroundDiv').style.backgroundColor = 'magenta';
+					document.getElementById('alphaTeamTitleDiv').innerHTML = 'Team Callie';
+					document.getElementById('bravoTeamBackgroundDiv').style.backgroundColor = '#88FF00';
+					document.getElementById('bravoTeamTitleDiv').innerHTML = 'Team Marie';
+				}
+				
+				function playerSetup(teamName, teamIndex, lobbyIndex, randomIndexArray) {
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.indexDiv').innerHTML = lobbyIndex;
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.mainWeaponDiv').innerHTML = '<img src="Main Weapons/' + unixFriendly(splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].name) + '.png"/>';
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.subWeaponDiv').innerHTML = '<img src="Sub Weapons/' + splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].subWeapon + '.png"/>';
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.specialWeaponDiv').innerHTML = '<img src="Special Weapons/' + (splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].specialWeapon == 'Bomb Rush' ? splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].subWeapon + ' ' : '') + splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].specialWeapon + '.png"/>';
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.weaponNameDiv').innerHTML = splatoon.weapons[randomIndexArray['weapon' + lobbyIndex + 'Index']].name;
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.headgearDiv').querySelector('.gearDiv').innerHTML = '<img src="Headgear/' + splatoon.gear.headgear[randomIndexArray['headgear' + lobbyIndex + 'Index']].name + '.png"/>';
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.headgearDiv').querySelector('.mainAbilityDiv').innerHTML = '<img src="Abilities/' + splatoon.gear.headgear[randomIndexArray['headgear' + lobbyIndex + 'Index']].mainAbility + '.png"/>';
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.headgearDiv').querySelector('.gearNameDiv').innerHTML = splatoon.gear.headgear[randomIndexArray['headgear' + lobbyIndex + 'Index']].name
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.clothingDiv').querySelector('.gearDiv').innerHTML = '<img src="Clothing/' + splatoon.gear.clothing[randomIndexArray['clothing' + lobbyIndex + 'Index']].name + '.png"/>';
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.clothingDiv').querySelector('.mainAbilityDiv').innerHTML = '<img src="Abilities/' + splatoon.gear.clothing[randomIndexArray['clothing' + lobbyIndex + 'Index']].mainAbility + '.png"/>';
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.clothingDiv').querySelector('.gearNameDiv').innerHTML = splatoon.gear.clothing[randomIndexArray['clothing' + lobbyIndex + 'Index']].name;
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.shoesDiv').querySelector('.gearDiv').innerHTML = '<img src="Shoes/' + splatoon.gear.shoes[randomIndexArray['shoes' + lobbyIndex + 'Index']].name + '.png"/>';
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.shoesDiv').querySelector('.mainAbilityDiv').innerHTML = '<img src="Abilities/' + splatoon.gear.shoes[randomIndexArray['shoes' + lobbyIndex + 'Index']].mainAbility + '.png"/>';
+					document.getElementById(teamName + 'TeamPlayer' + teamIndex + 'Div').querySelector('.shoesDiv').querySelector('.gearNameDiv').innerHTML = splatoon.gear.shoes[randomIndexArray['shoes' + lobbyIndex + 'Index']].name;
+				}
+				
+				function unixFriendly(text) {
+					return text.replace(/^\./g,"");
+				}
+				
+				var alphaTeamPlayerIndex = 0;
+				var bravoTeamPlayerIndex = 0;
+				for (var i = 0; i < 8; i++) {
+					if (splatoon.teamCombinations[teamCombinationIndex][i] == 0) {
+						alphaTeamPlayerIndex++;
+						playerSetup('alpha',alphaTeamPlayerIndex,i+1, random);
+					} else if (splatoon.teamCombinations[teamCombinationIndex][i] == 1) {
+						bravoTeamPlayerIndex++;
+						playerSetup('bravo',bravoTeamPlayerIndex,i+1, random);
+					}
+				}
+			
+		*/
+		</script>		
+    </body>
+</html>

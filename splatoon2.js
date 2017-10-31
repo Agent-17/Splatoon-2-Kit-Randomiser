@@ -352,7 +352,6 @@ var splatoon = {
                 {name:'Squinja Boots', mainAbility:'SSU'},
                 {name:'Strapping Reds', mainAbility:'IResU'},
                 {name:'Strapping Whites', mainAbility:'ISS'},
-                {name:'Sunny Climbing Shoes', mainAbility:'ISM'},
                 {name:'Sunny Climbing Shoes', mainAbility:'SS'},
                 {name:'Sunset Orca Hi-Tops', mainAbility:'DR'},
                 {name:'Trail Boots', mainAbility:'IRU'},

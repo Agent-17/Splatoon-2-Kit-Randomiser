@@ -63,6 +63,7 @@ var splatoon = {
         {name:'Rapid Blaster Pro', subWeapon:'Toxic Mist', specialWeapon:'Ink Storm'},
         {name:'Slosher', subWeapon:'Suction Bomb', specialWeapon:'Tenta Missiles'},
         {name:'Hero Slosher Replica', subWeapon:'Suction Bomb', specialWeapon:'Tenta Missiles'},
+        {name:'Slosher Deco', subWeapon:'Sprinkler', specialWeapon:'Baller'},
         {name:'Sloshing Machine', subWeapon:'Autobomb', specialWeapon:'Sting Ray'},
         {name:'Splash-o-matic', subWeapon:'Toxic Mist', specialWeapon:'Inkjet'},
         {name:'Splat Brella', subWeapon:'Sprinkler', specialWeapon:'Ink Storm'},
@@ -110,7 +111,7 @@ var splatoon = {
         {name:'Octobrush Nouveau', subWeapon:'Squid Beakon', specialWeapon:'Tenta Missiles'},
         {name:'Rapid Blaster Deco', subWeapon:'Suction Bomb', specialWeapon:'Inkjet'},
         {name:'Rapid Blaster Pro Deco', subWeapon:'Curling Bomb', specialWeapon:'Ink Armor'},
-        {name:'Slosher Deco', subWeapon:'Sprinkler', specialWeapon:'Baller'},
+        
         {name:'Sloshing Machine Neo', subWeapon:'Point Sensor', specialWeapon:'Splat-Bomb Launcher'},
         {name:'Neo Splash-o-matic', subWeapon:'Burst Bomb', specialWeapon:'Suction-Bomb Launcher'},
         {name:'Sorella Brella', subWeapon:'Toxic Mist', specialWeapon:'Splat-Bomb Launcher'},

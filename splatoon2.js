@@ -87,6 +87,7 @@ var splatoon = {
         {name:'Splattershot Pro', subWeapon:'Point Sensor', specialWeapon:'Ink Storm'},
         {name:'Forge Splattershot Pro', subWeapon:'Suction Bomb', specialWeapon:'Bubble Blower'},
         {name:'Sploosh-o-matic', subWeapon:'Curling Bomb', specialWeapon:'Splashdown'},
+        {name:'Squeezer', subWeapon:'Splash Wall', specialWeapon:'Sting Ray'},
         {name:'Tenta Brella', subWeapon:'Squid Beakon', specialWeapon:'Bubble Blower'},
         {name:'Tri-Slosher', subWeapon:'Burst Bomb', specialWeapon:'Ink Armor'}
     ],
@@ -110,13 +111,11 @@ var splatoon = {
         {name:'Zink Mini Splatling', subWeapon:'Curling Bomb', specialWeapon:'Ink Storm'},
         {name:'Octobrush Nouveau', subWeapon:'Squid Beakon', specialWeapon:'Tenta Missiles'},
         {name:'Rapid Blaster Deco', subWeapon:'Suction Bomb', specialWeapon:'Inkjet'},
-        {name:'Rapid Blaster Pro Deco', subWeapon:'Curling Bomb', specialWeapon:'Ink Armor'},
-        
+        {name:'Rapid Blaster Pro Deco', subWeapon:'Curling Bomb', specialWeapon:'Ink Armor'},  
         {name:'Sloshing Machine Neo', subWeapon:'Point Sensor', specialWeapon:'Splat-Bomb Launcher'},
         {name:'Neo Splash-o-matic', subWeapon:'Burst Bomb', specialWeapon:'Suction-Bomb Launcher'},
         {name:'Sorella Brella', subWeapon:'Toxic Mist', specialWeapon:'Splat-Bomb Launcher'},
         {name:'Neo Sploosh-o-matic', subWeapon:'Squid Beakon', specialWeapon:'Tenta Missiles'},
-        {name:'Squeezer', subWeapon:'Splash Wall', specialWeapon:'Sting Ray'},
         {name:'Foil Squeezer', subWeapon:'Splat Bomb', specialWeapon:'Bubble Blower'},
         {name:'Custom(?) Tenta Brella', subWeapon:'', specialWeapon:''},
         {name:'Tri-Slosher Nouveau', subWeapon:'Splat Bomb', specialWeapon:'Autobomb Launcher'},

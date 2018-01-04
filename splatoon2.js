@@ -17,7 +17,8 @@ var splatoon = {
         'Snapper Canal',
         'Starfish Mainstage',
         'Sturgeon Shipyard',
-        'The Reef'],
+        'The Reef',
+        'Walleye Warehouse'],
     weapons:[
         {name:'.52 Gal', subWeapon:'Point Sensor', specialWeapon:'Baller'},
         {name:'.96 Gal', subWeapon:'Sprinkler', specialWeapon:'Ink Armor'},
@@ -58,6 +59,7 @@ var splatoon = {
         {name:'N-ZAP \'89', subWeapon:'Autobomb', specialWeapon:'Tenta Missiles'},
         {name:'Octobrush', subWeapon:'Autobomb', specialWeapon:'Inkjet'},
         {name:'Herobrush Replica', subWeapon:'Autobomb', specialWeapon:'Inkjet'},
+        {name:'Octobrush Nouveau', subWeapon:'Squid Beakon', specialWeapon:'Tenta Missiles'},
         {name:'Range Blaster', subWeapon:'Suction Bomb', specialWeapon:'Ink Storm'},
         {name:'Rapid Blaster', subWeapon:'Ink Mine', specialWeapon:'Splat-Bomb Launcher'},
         {name:'Rapid Blaster Pro', subWeapon:'Toxic Mist', specialWeapon:'Ink Storm'},
@@ -89,7 +91,8 @@ var splatoon = {
         {name:'Sploosh-o-matic', subWeapon:'Curling Bomb', specialWeapon:'Splashdown'},
         {name:'Squeezer', subWeapon:'Splash Wall', specialWeapon:'Sting Ray'},
         {name:'Tenta Brella', subWeapon:'Squid Beakon', specialWeapon:'Bubble Blower'},
-        {name:'Tri-Slosher', subWeapon:'Burst Bomb', specialWeapon:'Ink Armor'}
+        {name:'Tri-Slosher', subWeapon:'Burst Bomb', specialWeapon:'Ink Armor'},
+        {name:'Undercover Brella', subWeapon:'Ink Mine', specialWeapon:'Splashdown'}
     ],
         /* UNRELEASED
         {name:'.52 Gal Deco', subWeapon:'Curling Bomb', specialWeapon:'Sting Ray'},
@@ -109,7 +112,6 @@ var splatoon = {
         {name:'L-3 Nozzlenose D', subWeapon:'Burst Bomb', specialWeapon:'Inkjet'},
         {name:'Luna Blaster Neo', subWeapon:'Ink Mine', specialWeapon:'Suction-Bomb Launcher'},
         {name:'Zink Mini Splatling', subWeapon:'Curling Bomb', specialWeapon:'Ink Storm'},
-        {name:'Octobrush Nouveau', subWeapon:'Squid Beakon', specialWeapon:'Tenta Missiles'},
         {name:'Rapid Blaster Deco', subWeapon:'Suction Bomb', specialWeapon:'Inkjet'},
         {name:'Rapid Blaster Pro Deco', subWeapon:'Curling Bomb', specialWeapon:'Ink Armor'},  
         {name:'Sloshing Machine Neo', subWeapon:'Point Sensor', specialWeapon:'Splat-Bomb Launcher'},
